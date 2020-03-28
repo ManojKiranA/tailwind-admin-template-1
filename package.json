@@ -1,0 +1,17 @@
+{
+  "name": "tailwind-admin-template",
+  "version": "1.0.0",
+  "description": "Tailwind admin template",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss  build src/css/tailwind.css -o public/css/tailwind.css"
+  },
+  "keywords": [],
+  "author": "Pugazhenthi K",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^9.7.5",
+    "postcss-cli": "^7.1.0",
+    "tailwindcss": "^1.2.0"
+  }
+}
