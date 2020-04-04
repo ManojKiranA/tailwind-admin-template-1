@@ -6,10 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tailwind Admin Template</title>
     <link rel="stylesheet" href="css/tailwind.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> -->
+    <style>
+        * {
+            /* border: 1px solid red; */
+        }
+
+        .divider {
+            border-top: 1px solid rgba(255, 255, 255, .15);
+        }
+
+        .rotate-15 {
+            transform: rotate(15deg);
+        }
+    </style>
 </head>
 
-<body class="h-screen bg-gray-100">
-    <h1>Its wroking</h1>
+<body class="bg-gray-100">
+    <div class="h-screen flex">
+        <!-- Left Sidebar -->
+        <div class="w-56 bg-theme-color border-r">
+            <div class="flex items-center py-6 px-4 font-semibold tracking-wider text-white text-lg uppercase">
+                <i class="fa fa-laugh-wink fa-2x transform"></i> <span class="ml-2">Tail wind</span>
+            </div>
+            <hr class="divider mx-4">
+            </hr>
+            <!-- 1px solid rgba(255,255,255,.15) -->
+            <div>
+                <a class="flex items-center p-4 text-sm text-white hover:text-white tracking-wide font-semibold"
+                    href="#">
+                    <i class="fa fa-dashboard"></i>
+                    <span class="pl-2">
+                        Dashboard
+                    </span>
+                </a>
+                <hr class="divider mx-4">
+                <a class="flex items-center py-2 text-sm text-gray-400 hover:text-white" href="#">
+                    <i class="fa fa-folder"></i>
+                    <span class="pl-2">
+                        Pages
+                    </span>
+                </a>
+                <a class="flex items-center py-2 text-sm text-gray-400 hover:text-white" href="#">
+                    <i class="fa fa-table"></i>
+                    <span class="pl-2">
+                        Tables
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!-- Main content area -->
+        <div class="flex-1 bg-white">
+
+        </div>
+    </div>
 </body>
 
 </html>
