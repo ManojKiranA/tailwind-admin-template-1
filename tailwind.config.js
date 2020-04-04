@@ -1,7 +1,11 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "theme-color": "#486EDB",
+      },
+    },
   },
   variants: {},
   plugins: [],
-}
+};
