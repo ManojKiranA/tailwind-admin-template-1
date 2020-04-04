@@ -120,7 +120,7 @@
       </nav>
       <!-- Page Heading -->
       <div class="flex-1 px-6 mb-4">
-        <div class="flex items-center justify-between mb-5">
+        <div class="flex items-center justify-between mb-3">
           <h1 class="text-gray-700 text-3xl">Dashboard</h1>
           <div>
             <a href=""
@@ -297,17 +297,64 @@
                 <canvas id="conversionsChart" class="chart-canvas"></canvas>
                 <script>
                   new Chart(document.getElementById("conversionsChart"), {
-                    "type": "bar",
+                    type: "bar",
                     data: {
-                      labels: ["Oct 1", "Oct 2", "Oct 3", "Oct 4", "Oct 5", "Oct 6", "Oct 7", "Oct 8", "Oct 9", "Oct 10", "Oct 11", "Oct 12"],
+                      labels: ["January", "February", "March", "April", "May", "June"],
                       datasets: [{
-                        barPercentage: 0.5,
-                        barThickness: 6,
-                        maxBarThickness: 8,
-                        minBarLength: 2,
-                        data: [10, 20, 30, 40, 50, 60, 70]
-                      }]
-
+                        label: "Revenue",
+                        backgroundColor: "rgba(0, 97, 242, 1)",
+                        hoverBackgroundColor: "rgba(0, 97, 242, 0.9)",
+                        borderColor: "#4e73df",
+                        barThickness: 5,
+                        data: [4215, 5312, 6251, 7841, 9821, 14984]
+                      }],
+                    },
+                    options: {
+                      layout: {
+                        padding: {
+                          left: 10,
+                          right: 25,
+                          top: 25,
+                          bottom: 0
+                        }
+                      },
+                      scales: {
+                        xAxes: [{
+                          time: {
+                            unit: "month"
+                          },
+                          gridLines: {
+                            display: false,
+                            drawBorder: false
+                          },
+                          ticks: {
+                            maxTicksLimit: 6
+                          },
+                          maxBarThickness: 20
+                        }],
+                        yAxes: [{
+                          ticks: {
+                            min: 0,
+                            max: 15000,
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            // Include a dollar sign in the ticks
+                            callback: function (value, index, values) {
+                              return "$" + value;
+                            }
+                          },
+                          gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                          }
+                        }]
+                      },
+                      legend: {
+                        display: false
+                      },
                     }
                   });
                 </script>
