@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Admin Template</title>
+    <link rel="stylesheet" href="public/css/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"
+        integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
+    <style>
+        .divider {
+            border-top: 1px solid rgba(255, 255, 255, .15);
+        }
+
+        .rotate-15 {
+            transform: rotate(-15deg);
+        }
+
+        .notification {
+            top: 1px;
+            right: 1px;
+            font-size: 10px;
+            padding: 2px 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div x-data="{sidebar : true}" class="flex">
+
+        <!-- Left Sidebar -->
+        <div class="fixed w-24 h-screen border-r lg:w-56 bg-theme-color"
+            :class="{ 'md:block hidden' : sidebar == false }">
+            <div
+                class="items-center px-4 py-4 font-bold leading-10 tracking-wider text-center text-white uppercase lg:flex h-18 text-md">
+                <i class="text-center transform fa fa-laugh-wink fa-2x rotate-15"></i>
+                <span class="hidden ml-2 lg:inline-block">Tailwind CSS</span>
+            </div>
+            <hr class="mx-4 divider">
+            <div class="mx-2 lg:mx-4">
+                <a class="items-center block py-4 font-semibold tracking-wide text-center text-gray-400 lg:flex lg:text-sm hover:text-white"
+                    href="index.html">
+                    <i class="block fa fa-tachometer-alt"></i>
+                    <span class="block text-xs lg:pl-2 lg:text-sm">
+                        Dashboard
+                    </span>
+                </a>
+                <hr class="divider">
+                <a class="items-center block py-4 tracking-wide text-center text-gray-400 lg:flex lg:text-sm hover:text-white"
+                    href="#">
+                    <i class="fa fa-folder"></i>
+                    <span class="block text-xs lg:pl-2 lg:text-sm">
+                        Pages
+                    </span>
+                </a>
+                <hr class="divider">
+                <a class="items-center block py-4 tracking-wide text-center text-white lg:flex lg:text-sm hover:text-white"
+                    href="tables.html">
+                    <i class="fa fa-table"></i>
+                    <span class="block text-xs lg:pl-2 lg:text-sm">
+                        Tables
+                    </span>
+                </a>
+                <hr class="divider">
+                <a class="items-center block py-4 tracking-wide text-center text-gray-400 lg:flex lg:text-sm hover:text-white"
+                    href="#">
+                    <i class="fa fa-chart-bar"></i>
+                    <span class="block text-xs lg:pl-2 lg:text-sm">
+                        Charts
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <div class="flex-1 ml-24 bg-gray-100 lg:ml-56">
+
+            <!-- Topbar -->
+            <nav class="flex items-center justify-between px-4 py-3 mb-4 bg-white shadow h-18">
+                <button @click="sidebar = !sidebar"
+                    class="px-2 py-2 rounded-full md:hidden text-theme-color hover:bg-blue-100 focus:outline-none">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg></button>
+                <div class="flex items-center ml-2 md:w-3/4">
+                    <input
+                        class="w-full px-4 py-2 bg-gray-100 lg:w-1/3 md:w-2/3 rounded-l-md focus:outline-none focus:shadow-outline"
+                        placeholder="Search for..." type="text">
+                    <button
+                        class="px-3 py-2 text-white bg-theme-color rounded-r-md hover:bg-theme-hover-color focus:outline-none focus:shadow-outline">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <ul class="flex items-center justify-between ml-2">
+                    <li>
+                        <a href=""
+                            class="relative flex items-center h-10 px-2 py-2 text-gray-400 rounded-full hover:bg-blue-100 focus:outline-none focus:bg-blue-100 focus:text-gray-600 hover:text-gray-600">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                                <path
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                </path>
+                            </svg>
+                            <!-- <i class="fa fa-bell"></i> -->
+                            <span class="absolute px-1 text-xs text-white bg-red-500 rounded-md notification">59</span>
+                        </a>
+                    </li>
+                    <li class="ml-3">
+                        <a href=""
+                            class="relative flex items-center h-10 px-2 py-2 text-gray-400 rounded-full hover:bg-blue-100 focus:outline-none focus:bg-blue-100 focus:text-gray-600 hover:text-gray-600">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                                <path
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span class="absolute px-1 text-xs text-white bg-red-500 rounded-md notification">5</span>
+                        </a>
+                    </li>
+                    <li class="h-12 mx-4 border-r"></li>
+                    <li class="flex items-center flex-1">
+                        <a href="" class="flex items-center text-gray-400 focus:outline-none">
+                            <span class="hidden text-sm text-gray-700 md:block">Pugazhenthi </span>
+                            <img class="w-10 h-10 ml-2 rounded-full" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+                                alt="User">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Heading -->
+            <div class="flex-1 px-6 mb-4">
+                <h1 class="mb-2 text-3xl text-gray-700">Tables</h1>
+                <div class="mb-2 -mx-3">
+                    <div class="w-full p-3">
+                        <div class="bg-white rounded-md shadow">
+                            <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
+                                Bordered Table
+                            </div>
+                            <div class="p-5 text-gray-600 text-md">
+                                <table class="w-full text-left">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-2 border">Name</th>
+                                            <th class="px-4 py-2 border">Position</th>
+                                            <th class="px-4 py-2 border">Office</th>
+                                            <th class="px-4 py-2 border">Age</th>
+                                            <th class="px-4 py-2 border">Start Date</th>
+                                            <th class="px-4 py-2 border">Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Jennifer Chang</td>
+                                            <td class="px-4 py-2 border">Regional Director</td>
+                                            <td class="px-4 py-2 border">Singapore</td>
+                                            <td class="px-4 py-2 border">28</td>
+                                            <td class="px-4 py-2 border">2010/11/14</td>
+                                            <td class="px-4 py-2 border">$357,650</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Jonas Alexander</td>
+                                            <td class="px-4 py-2 border">Developer</td>
+                                            <td class="px-4 py-2 border">San Francisco</td>
+                                            <td class="px-4 py-2 border">30</td>
+                                            <td class="px-4 py-2 border">2010/07/14</td>
+                                            <td class="px-4 py-2 border">$86,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Lael Greer</td>
+                                            <td class="px-4 py-2 border">Systems Administrator</td>
+                                            <td class="px-4 py-2 border">London</td>
+                                            <td class="px-4 py-2 border">21</td>
+                                            <td class="px-4 py-2 border">2009/02/27</td>
+                                            <td class="px-4 py-2 border">$103,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Martena Mccray</td>
+                                            <td class="px-4 py-2 border">Post-Sales support</td>
+                                            <td class="px-4 py-2 border">Edinburgh</td>
+                                            <td class="px-4 py-2 border">46</td>
+                                            <td class="px-4 py-2 border">2011/03/09</td>
+                                            <td class="px-4 py-2 border">$324,050</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Michael Bruce</td>
+                                            <td class="px-4 py-2 border">Javascript Developer</td>
+                                            <td class="px-4 py-2 border">Singapore</td>
+                                            <td class="px-4 py-2 border">29</td>
+                                            <td class="px-4 py-2 border">2011/06/27</td>
+                                            <td class="px-4 py-2 border">$183,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Michael Silva</td>
+                                            <td class="px-4 py-2 border">Marketing Designer</td>
+                                            <td class="px-4 py-2 border">London</td>
+                                            <td class="px-4 py-2 border">66</td>
+                                            <td class="px-4 py-2 border">2012/11/27</td>
+                                            <td class="px-4 py-2 border">$198,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Michelle House</td>
+                                            <td class="px-4 py-2 border">Integration Specialist</td>
+                                            <td class="px-4 py-2 border">Sydney</td>
+                                            <td class="px-4 py-2 border">37</td>
+                                            <td class="px-4 py-2 border">2011/06/02</td>
+                                            <td class="px-4 py-2 border">$95,400</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Olivia Liang</td>
+                                            <td class="px-4 py-2 border">Support Engineer</td>
+                                            <td class="px-4 py-2 border">Singapore</td>
+                                            <td class="px-4 py-2 border">64</td>
+                                            <td class="px-4 py-2 border">2011/02/03</td>
+                                            <td class="px-4 py-2 border">$234,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Paul Byrd</td>
+                                            <td class="px-4 py-2 border">Chief Financial Officer (CFO)</td>
+                                            <td class="px-4 py-2 border">New York</td>
+                                            <td class="px-4 py-2 border">64</td>
+                                            <td class="px-4 py-2 border">2010/06/09</td>
+                                            <td class="px-4 py-2 border">$725,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Prescott Bartlett</td>
+                                            <td class="px-4 py-2 border">Technical Author</td>
+                                            <td class="px-4 py-2 border">London</td>
+                                            <td class="px-4 py-2 border">27</td>
+                                            <td class="px-4 py-2 border">2011/05/07</td>
+                                            <td class="px-4 py-2 border">$145,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-2 -mx-3">
+                    <div class="w-full p-3">
+                        <div class="bg-white rounded-md shadow">
+                            <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
+                                Striped Table
+                            </div>
+                            <div class="p-5 text-gray-700 text-md">
+                                <table class="w-full text-left">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-2 border">Name</th>
+                                            <th class="px-4 py-2 border">Position</th>
+                                            <th class="px-4 py-2 border">Office</th>
+                                            <th class="px-4 py-2 border">Age</th>
+                                            <th class="px-4 py-2 border">Start Date</th>
+                                            <th class="px-4 py-2 border">Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Jennifer Chang</td>
+                                            <td class="px-4 py-2 border">Regional Director</td>
+                                            <td class="px-4 py-2 border">Singapore</td>
+                                            <td class="px-4 py-2 border">28</td>
+                                            <td class="px-4 py-2 border">2010/11/14</td>
+                                            <td class="px-4 py-2 border">$357,650</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2 border">Jonas Alexander</td>
+                                            <td class="px-4 py-2 border">Developer</td>
+                                            <td class="px-4 py-2 border">San Francisco</td>
+                                            <td class="px-4 py-2 border">30</td>
+                                            <td class="px-4 py-2 border">2010/07/14</td>
+                                            <td class="px-4 py-2 border">$86,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Lael Greer</td>
+                                            <td class="px-4 py-2 border">Systems Administrator</td>
+                                            <td class="px-4 py-2 border">London</td>
+                                            <td class="px-4 py-2 border">21</td>
+                                            <td class="px-4 py-2 border">2009/02/27</td>
+                                            <td class="px-4 py-2 border">$103,500</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2 border">Martena Mccray</td>
+                                            <td class="px-4 py-2 border">Post-Sales support</td>
+                                            <td class="px-4 py-2 border">Edinburgh</td>
+                                            <td class="px-4 py-2 border">46</td>
+                                            <td class="px-4 py-2 border">2011/03/09</td>
+                                            <td class="px-4 py-2 border">$324,050</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Michael Bruce</td>
+                                            <td class="px-4 py-2 border">Javascript Developer</td>
+                                            <td class="px-4 py-2 border">Singapore</td>
+                                            <td class="px-4 py-2 border">29</td>
+                                            <td class="px-4 py-2 border">2011/06/27</td>
+                                            <td class="px-4 py-2 border">$183,000</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2 border">Michael Silva</td>
+                                            <td class="px-4 py-2 border">Marketing Designer</td>
+                                            <td class="px-4 py-2 border">London</td>
+                                            <td class="px-4 py-2 border">66</td>
+                                            <td class="px-4 py-2 border">2012/11/27</td>
+                                            <td class="px-4 py-2 border">$198,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Michelle House</td>
+                                            <td class="px-4 py-2 border">Integration Specialist</td>
+                                            <td class="px-4 py-2 border">Sydney</td>
+                                            <td class="px-4 py-2 border">37</td>
+                                            <td class="px-4 py-2 border">2011/06/02</td>
+                                            <td class="px-4 py-2 border">$95,400</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2 border">Olivia Liang</td>
+                                            <td class="px-4 py-2 border">Support Engineer</td>
+                                            <td class="px-4 py-2 border">Singapore</td>
+                                            <td class="px-4 py-2 border">64</td>
+                                            <td class="px-4 py-2 border">2011/02/03</td>
+                                            <td class="px-4 py-2 border">$234,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2 border">Paul Byrd</td>
+                                            <td class="px-4 py-2 border">Chief Financial Officer (CFO)</td>
+                                            <td class="px-4 py-2 border">New York</td>
+                                            <td class="px-4 py-2 border">64</td>
+                                            <td class="px-4 py-2 border">2010/06/09</td>
+                                            <td class="px-4 py-2 border">$725,000</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2 border">Prescott Bartlett</td>
+                                            <td class="px-4 py-2 border">Technical Author</td>
+                                            <td class="px-4 py-2 border">London</td>
+                                            <td class="px-4 py-2 border">27</td>
+                                            <td class="px-4 py-2 border">2011/05/07</td>
+                                            <td class="px-4 py-2 border">$145,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="mt-4 text-right">
+                                    <span class="relative inline-flex text-gray-600 -z-1">
+                                        <button type="button"
+                                            class="relative inline-flex items-center px-2 py-2 text-sm leading-5 text-gray-500 bg-white border border-gray-300 rounded-l-md hover:text-gray-500 focus:outline-none ">
+                                            <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                class="w-4 h-4">
+                                                <path d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button"
+                                            class="relative inline-flex items-center px-4 py-2 -ml-px text-sm leading-5 bg-white border border-gray-300 hover:text-gray-500 focus:outline-none ">
+                                            1
+                                        </button>
+                                        <button type="button"
+                                            class="relative inline-flex items-center px-4 py-2 -ml-px text-sm leading-5 bg-white border border-gray-300 hover:text-gray-500 focus:outline-none ">
+                                            2
+                                        </button>
+                                        <button type="button"
+                                            class="relative items-center hidden px-4 py-2 -ml-px text-sm leading-5 bg-white border border-gray-300 md:inline-flex hover:text-gray-500 focus:outline-none ">
+                                            4
+                                        </button>
+                                        <button type="button"
+                                            class="relative items-center hidden px-4 py-2 -ml-px text-sm leading-5 bg-white border border-gray-300 md:inline-flex hover:text-gray-500 focus:outline-none ">
+                                            5
+                                        </button>
+                                        <button type="button"
+                                            class="relative inline-flex items-center px-2 py-2 -ml-px text-sm leading-5 text-gray-500 bg-white border border-gray-300 rounded-r-md hover:text-gray-500 focus:outline-none ">
+                                            <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                class="w-4 h-4">
+                                                <path d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-2 -mx-3">
+                    <div class="w-full p-3">
+                        <div class="bg-white rounded-md shadow">
+                            <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
+                                Striped Table Full With
+                            </div>
+                            <div class="pt-3 text-gray-700 text-md">
+                                <table class="w-full text-left">
+                                    <thead>
+                                        <tr class="bg-gray-50">
+                                            <th class="px-4 py-2">Name</th>
+                                            <th class="px-4 py-2">Position</th>
+                                            <th class="px-4 py-2">Office</th>
+                                            <th class="px-4 py-2">Age</th>
+                                            <th class="px-4 py-2">Start Date</th>
+                                            <th class="px-4 py-2">Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="px-4 py-2">Jennifer Chang</td>
+                                            <td class="px-4 py-2">Regional Director</td>
+                                            <td class="px-4 py-2">Singapore</td>
+                                            <td class="px-4 py-2">28</td>
+                                            <td class="px-4 py-2">2010/11/14</td>
+                                            <td class="px-4 py-2">$357,650</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2">Jonas Alexander</td>
+                                            <td class="px-4 py-2">Developer</td>
+                                            <td class="px-4 py-2">San Francisco</td>
+                                            <td class="px-4 py-2">30</td>
+                                            <td class="px-4 py-2">2010/07/14</td>
+                                            <td class="px-4 py-2">$86,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">Lael Greer</td>
+                                            <td class="px-4 py-2">Systems Administrator</td>
+                                            <td class="px-4 py-2">London</td>
+                                            <td class="px-4 py-2">21</td>
+                                            <td class="px-4 py-2">2009/02/27</td>
+                                            <td class="px-4 py-2">$103,500</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2">Martena Mccray</td>
+                                            <td class="px-4 py-2">Post-Sales support</td>
+                                            <td class="px-4 py-2">Edinburgh</td>
+                                            <td class="px-4 py-2">46</td>
+                                            <td class="px-4 py-2">2011/03/09</td>
+                                            <td class="px-4 py-2">$324,050</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">Michael Bruce</td>
+                                            <td class="px-4 py-2">Javascript Developer</td>
+                                            <td class="px-4 py-2">Singapore</td>
+                                            <td class="px-4 py-2">29</td>
+                                            <td class="px-4 py-2">2011/06/27</td>
+                                            <td class="px-4 py-2">$183,000</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2">Michael Silva</td>
+                                            <td class="px-4 py-2">Marketing Designer</td>
+                                            <td class="px-4 py-2">London</td>
+                                            <td class="px-4 py-2">66</td>
+                                            <td class="px-4 py-2">2012/11/27</td>
+                                            <td class="px-4 py-2">$198,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">Michelle House</td>
+                                            <td class="px-4 py-2">Integration Specialist</td>
+                                            <td class="px-4 py-2">Sydney</td>
+                                            <td class="px-4 py-2">37</td>
+                                            <td class="px-4 py-2">2011/06/02</td>
+                                            <td class="px-4 py-2">$95,400</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2">Olivia Liang</td>
+                                            <td class="px-4 py-2">Support Engineer</td>
+                                            <td class="px-4 py-2">Singapore</td>
+                                            <td class="px-4 py-2">64</td>
+                                            <td class="px-4 py-2">2011/02/03</td>
+                                            <td class="px-4 py-2">$234,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-2">Paul Byrd</td>
+                                            <td class="px-4 py-2">Chief Financial Officer (CFO)</td>
+                                            <td class="px-4 py-2">New York</td>
+                                            <td class="px-4 py-2">64</td>
+                                            <td class="px-4 py-2">2010/06/09</td>
+                                            <td class="px-4 py-2">$725,000</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="px-4 py-2">Prescott Bartlett</td>
+                                            <td class="px-4 py-2">Technical Author</td>
+                                            <td class="px-4 py-2">London</td>
+                                            <td class="px-4 py-2">27</td>
+                                            <td class="px-4 py-2">2011/05/07</td>
+                                            <td class="px-4 py-2">$145,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="py-2 m-2 text-right">
+                                    <span class="relative inline-flex text-gray-600 -z-1">
+                                        <button type="button"
+                                            class="relative inline-flex items-center px-2 py-2 text-sm leading-5 text-gray-500 bg-white border border-gray-300 rounded-l-md hover:text-gray-500 focus:outline-none ">
+                                            <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                class="w-4 h-4">
+                                                <path d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button"
+                                            class="relative inline-flex items-center px-4 py-2 -ml-px text-sm leading-5 bg-white border border-gray-300 hover:text-gray-500 focus:outline-none ">
+                                            1
+                                        </button>
+                                        <button type="button"
+                                            class="relative inline-flex items-center px-4 py-2 -ml-px text-sm leading-5 bg-white border border-gray-300 hover:text-gray-500 focus:outline-none ">
+                                            2
+                                        </button>
+                                        <button type="button"
+                                            class="relative items-center hidden px-4 py-2 -ml-px text-sm leading-5 bg-white border border-gray-300 md:inline-flex hover:text-gray-500 focus:outline-none ">
+                                            4
+                                        </button>
+                                        <button type="button"
+                                            class="relative items-center hidden px-4 py-2 -ml-px text-sm leading-5 bg-white border border-gray-300 md:inline-flex hover:text-gray-500 focus:outline-none ">
+                                            5
+                                        </button>
+                                        <button type="button"
+                                            class="relative inline-flex items-center px-2 py-2 -ml-px text-sm leading-5 text-gray-500 bg-white border border-gray-300 rounded-r-md hover:text-gray-500 focus:outline-none ">
+                                            <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                class="w-4 h-4">
+                                                <path d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Footer -->
+            <div class="p-6 bg-white">
+                <div class="flex">
+                    <div class="text-sm tracking-wide text-gray-600">
+                        Copyright &copy; Your Website 2020
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="public/js/theme.js"></script>
+
+</html>
