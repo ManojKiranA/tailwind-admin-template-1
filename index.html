@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tailwind Admin Template</title>
-  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="public/css/tailwind.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -13,11 +13,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"
     integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
   <style>
-    * {
-      /* border: 1px solid red; */
-      font-family: 'Nunito';
-    }
-
     .divider {
       border-top: 1px solid rgba(255, 255, 255, .15);
     }
@@ -233,108 +228,16 @@
               </div>
               <div class="p-5 leading-7 text-gray-800 text-md">
                 <canvas id="conversionsChart" class="chart-canvas"></canvas>
-                <script>
-                  new Chart(document.getElementById("conversionsChart"), {
-                    type: "bar",
-                    data: {
-                      labels: ["January", "February", "March", "April", "May", "June"],
-                      datasets: [{
-                        label: "Revenue",
-                        backgroundColor: "rgba(0, 97, 242, 1)",
-                        hoverBackgroundColor: "rgba(0, 97, 242, 0.9)",
-                        borderColor: "#4e73df",
-                        barThickness: 5,
-                        data: [4215, 5312, 6251, 7841, 9821, 14984]
-                      }],
-                    },
-                    options: {
-                      layout: {
-                        padding: {
-                          left: 10,
-                          right: 25,
-                          top: 25,
-                          bottom: 0
-                        }
-                      },
-                      scales: {
-                        xAxes: [{
-                          time: {
-                            unit: "month"
-                          },
-                          gridLines: {
-                            display: false,
-                            drawBorder: false
-                          },
-                          ticks: {
-                            maxTicksLimit: 6
-                          },
-                          maxBarThickness: 20
-                        }],
-                        yAxes: [{
-                          ticks: {
-                            min: 0,
-                            max: 15000,
-                            maxTicksLimit: 5,
-                            padding: 10,
-                            // Include a dollar sign in the ticks
-                            callback: function (value, index, values) {
-                              return "$" + value;
-                            }
-                          },
-                          gridLines: {
-                            color: "rgb(234, 236, 244)",
-                            zeroLineColor: "rgb(234, 236, 244)",
-                            drawBorder: false,
-                            borderDash: [2],
-                            zeroLineBorderDash: [2]
-                          }
-                        }]
-                      },
-                      legend: {
-                        display: false
-                      },
-                    }
-                  });
-                </script>
               </div>
             </div>
           </div>
           <div class="w-full p-3 md:w-1/2">
             <div class="bg-white rounded-md shadow">
               <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
-                Earnings Overview
+                Insight Overview
               </div>
               <div class="p-5 leading-7 text-gray-800 text-md">
                 <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
-                <script>
-                  new Chart(document.getElementById("chartjs-7"), {
-                    "type": "bar",
-                    "data": {
-                      "labels": ["January", "February", "March", "April"],
-                      "datasets": [{
-                        "label": "Page Impressions",
-                        "data": [10, 20, 30, 40],
-                        "borderColor": "rgb(255, 99, 132)",
-                        "backgroundColor": "rgba(255, 99, 132, 0.2)"
-                      }, {
-                        "label": "Adsense Clicks",
-                        "data": [5, 15, 10, 30],
-                        "type": "line",
-                        "fill": false,
-                        "borderColor": "rgb(54, 162, 235)"
-                      }]
-                    },
-                    "options": {
-                      "scales": {
-                        "yAxes": [{
-                          "ticks": {
-                            "beginAtZero": true
-                          }
-                        }]
-                      }
-                    }
-                  });
-                </script>
               </div>
             </div>
           </div>
@@ -475,5 +378,6 @@
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="public/js/theme.js"></script>
 
 </html>
