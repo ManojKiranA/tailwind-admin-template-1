@@ -108,22 +108,59 @@
                     </button>
                 </div>
                 <ul class="flex items-center justify-between ml-2">
-                    <li>
-                        <a href=""
-                            class="relative flex items-center h-10 px-2 py-2 text-gray-400 rounded-full hover:bg-blue-100 focus:outline-none focus:bg-blue-100 focus:text-gray-600 hover:text-gray-600">
+                    <li x-data="{bellNotification: false}" @click.away="bellNotification = false" class="relative">
+                        <button @click="bellNotification = !bellNotification"
+                            class="relative flex items-center h-10 px-2 py-2 text-gray-400 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 focus:text-gray-600 hover:text-gray-600">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
                                 <path
                                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
                                 </path>
                             </svg>
-                            <!-- <i class="fa fa-bell"></i> -->
-                            <span class="absolute px-1 text-xs text-white bg-red-500 rounded-md notification">59</span>
-                        </a>
+                            <span class="absolute px-1 text-xs text-white bg-red-500 rounded-md notification">5</span>
+                        </button>
+                        <!-- Bell Notifications -->
+                        <div class="absolute right-0 hidden top-6" :class="{ 'hidden': bellNotification == false}">
+                            <div class="w-64 max-w-sm py-2 bg-white border rounded-sm">
+                                <a class="flex p-2 mb-1 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                    href="#">
+                                    <img src="https://images.unsplash.com/photo-1568967729548-e3dbad3d37e0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&ixid=eyJhcHBfaWQiOjF9&fit=facearea&facepad=2"
+                                        alt="" class="w-10 h-10 rounded-full">
+                                    <div class="pl-2 ml-2 text-xs text-gray-600">
+                                        <p class="text-sm font-semibold text-gray-700">
+                                            John Doe
+                                        </p>
+                                        Added comment to your video.
+                                    </div>
+                                </a>
+                                <a class="flex p-2 mb-1 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                    href="#">
+                                    <img src="https://images.unsplash.com/photo-1568967729548-e3dbad3d37e0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&ixid=eyJhcHBfaWQiOjF9&fit=facearea&facepad=2"
+                                        alt="" class="w-10 h-10 rounded-full">
+                                    <div class="pl-2 ml-2 text-xs text-gray-600">
+                                        <p class="text-sm font-semibold text-gray-700">
+                                            John Doe
+                                        </p>
+                                        Added comment to your video.
+                                    </div>
+                                </a>
+                                <a class="flex p-2 mb-1 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                    href="#">
+                                    <img src="https://images.unsplash.com/photo-1568967729548-e3dbad3d37e0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&ixid=eyJhcHBfaWQiOjF9&fit=facearea&facepad=2"
+                                        alt="" class="w-10 h-10 rounded-full">
+                                    <div class="pl-2 ml-2 text-xs text-gray-600">
+                                        <p class="text-sm font-semibold text-gray-700">
+                                            John Doe
+                                        </p>
+                                        Added comment to your video.
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </li>
-                    <li class="ml-3">
-                        <a href=""
-                            class="relative flex items-center h-10 px-2 py-2 text-gray-400 rounded-full hover:bg-blue-100 focus:outline-none focus:bg-blue-100 focus:text-gray-600 hover:text-gray-600">
+                    <li x-data="{mailNotification: false}" @click.away="mailNotification = false" class="relative ml-3">
+                        <button @click="mailNotification = !mailNotification"
+                            class="relative flex items-center h-10 px-2 py-2 text-gray-400 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 focus:text-gray-600 hover:text-gray-600">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
                                 <path
@@ -131,7 +168,45 @@
                                 </path>
                             </svg>
                             <span class="absolute px-1 text-xs text-white bg-red-500 rounded-md notification">5</span>
-                        </a>
+                        </button>
+                        <!-- Mail Notifications -->
+                        <div class="absolute right-0 hidden top-6" :class="{ 'hidden': mailNotification == false}">
+                            <div class="w-64 max-w-sm py-2 bg-white border rounded-sm">
+                                <a class="flex p-2 mb-1 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                    href="#">
+                                    <img src="https://images.unsplash.com/photo-1568967729548-e3dbad3d37e0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&ixid=eyJhcHBfaWQiOjF9&fit=facearea&facepad=2"
+                                        alt="" class="w-10 h-10 rounded-full">
+                                    <div class="pl-2 ml-2 text-xs text-gray-600">
+                                        <p class="text-sm font-semibold text-gray-700">
+                                            John Doe
+                                        </p>
+                                        Added comment to your video.
+                                    </div>
+                                </a>
+                                <a class="flex p-2 mb-1 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                    href="#">
+                                    <img src="https://images.unsplash.com/photo-1568967729548-e3dbad3d37e0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&ixid=eyJhcHBfaWQiOjF9&fit=facearea&facepad=2"
+                                        alt="" class="w-10 h-10 rounded-full">
+                                    <div class="pl-2 ml-2 text-xs text-gray-600">
+                                        <p class="text-sm font-semibold text-gray-700">
+                                            John Doe
+                                        </p>
+                                        Added comment to your video.
+                                    </div>
+                                </a>
+                                <a class="flex p-2 mb-1 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                                    href="#">
+                                    <img src="https://images.unsplash.com/photo-1568967729548-e3dbad3d37e0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&ixid=eyJhcHBfaWQiOjF9&fit=facearea&facepad=2"
+                                        alt="" class="w-10 h-10 rounded-full">
+                                    <div class="pl-2 ml-2 text-xs text-gray-600">
+                                        <p class="text-sm font-semibold text-gray-700">
+                                            John Doe
+                                        </p>
+                                        Added comment to your video.
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                     <li class="h-12 mx-4 border-r"></li>
                     <li class="flex items-center flex-1">
