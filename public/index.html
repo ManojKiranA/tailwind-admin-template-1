@@ -27,8 +27,8 @@
     }
 
     .notification {
-      top: 3px;
-      right: 3px;
+      top: 1px;
+      right: 1px;
       font-size: 10px;
       padding: 2px 4px;
     }
@@ -37,249 +37,187 @@
 
 <body>
   <div x-data="{sidebar : true}" class="flex">
+
     <!-- Left Sidebar -->
-    <div class="w-24 lg:w-56 bg-theme-color border-r fixed h-screen" :class="{ 'md:block hidden' : sidebar == false }">
+    <div class="fixed w-24 h-screen border-r lg:w-56 bg-theme-color" :class="{ 'md:block hidden' : sidebar == false }">
       <div
-        class="lg:flex h-18 py-4 px-4 items-center text-center font-bold tracking-wider text-white text-md uppercase leading-10">
-        <i class="fa fa-laugh-wink fa-2x text-center transform rotate-15"></i>
-        <span class="ml-2 hidden lg:inline-block">Tailwind CSS</span>
+        class="items-center px-4 py-4 font-bold leading-10 tracking-wider text-center text-white uppercase lg:flex h-18 text-md">
+        <i class="text-center transform fa fa-laugh-wink fa-2x rotate-15"></i>
+        <span class="hidden ml-2 lg:inline-block">Tailwind CSS</span>
       </div>
-      <hr class="divider mx-4">
+      <hr class="mx-4 divider">
       <div class="mx-2 lg:mx-4">
-        <a class="block lg:flex items-center text-center py-4 lg:text-sm text-white hover:text-white tracking-wide font-semibold"
+        <a class="items-center block py-4 font-semibold tracking-wide text-center text-white lg:flex lg:text-sm hover:text-white"
           href="index.html">
-          <i class="fa fa-tachometer-alt block"></i>
-          <span class="block lg:pl-2 text-xs lg:text-sm">
+          <i class="block fa fa-tachometer-alt"></i>
+          <span class="block text-xs lg:pl-2 lg:text-sm">
             Dashboard
           </span>
         </a>
         <hr class="divider">
-        <a class="block lg:flex items-center text-center py-4 lg:text-sm text-gray-400 hover:text-white tracking-wide"
+        <a class="items-center block py-4 tracking-wide text-center text-gray-400 lg:flex lg:text-sm hover:text-white"
           href="#">
           <i class="fa fa-folder"></i>
-          <span class="block lg:pl-2 text-xs lg:text-sm">
+          <span class="block text-xs lg:pl-2 lg:text-sm">
             Pages
           </span>
         </a>
         <hr class="divider">
-        <a class="block lg:flex items-center text-center py-4 lg:text-sm text-gray-400 hover:text-white  tracking-wide"
+        <a class="items-center block py-4 tracking-wide text-center text-gray-400 lg:flex lg:text-sm hover:text-white"
           href="#">
           <i class="fa fa-table"></i>
-          <span class="block lg:pl-2 text-xs lg:text-sm">
+          <span class="block text-xs lg:pl-2 lg:text-sm">
             Tables
           </span>
         </a>
         <hr class="divider">
-        <a class="block lg:flex items-center text-center py-4 lg:text-sm text-gray-400 hover:text-white  tracking-wide"
+        <a class="items-center block py-4 tracking-wide text-center text-gray-400 lg:flex lg:text-sm hover:text-white"
           href="#">
           <i class="fa fa-chart-bar"></i>
-          <span class="block lg:pl-2 text-xs lg:text-sm">
+          <span class="block text-xs lg:pl-2 lg:text-sm">
             Charts
           </span>
         </a>
       </div>
     </div>
+
     <!-- Main content area -->
-    <div class="flex-1 ml-24 lg:ml-56 bg-gray-100">
+    <div class="flex-1 ml-24 bg-gray-100 lg:ml-56">
+
       <!-- Topbar -->
-      <nav class="flex justify-between items-center px-4 py-3 shadow bg-white h-18 mb-4">
+      <nav class="flex items-center justify-between px-4 py-3 mb-4 bg-white shadow h-18">
         <button @click="sidebar = !sidebar"
-          class="px-3 py-2 md:hidden text-theme-color hover:bg-blue-100 rounded-full focus:outline-none"><i
-            class="fa fa-bars"></i></button>
-        <div class="flex items-center md:w-3/4 ml-2">
+          class="px-2 py-2 rounded-full md:hidden text-theme-color hover:bg-blue-100 focus:outline-none">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            viewBox="0 0 24 24" class="w-6 h-6">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg></button>
+        <div class="flex items-center ml-2 md:w-3/4">
           <input
-            class="px-4 py-2 lg:w-1/3 md:w-2/3 w-full rounded-l-md bg-gray-100 focus:outline-none focus:shadow-outline"
+            class="w-full px-4 py-2 bg-gray-100 lg:w-1/3 md:w-2/3 rounded-l-md focus:outline-none focus:shadow-outline"
             placeholder="Search for..." type="text">
           <button
-            class="bg-theme-color px-3 py-2 rounded-r-md text-white hover:bg-theme-hover-color focus:outline-none focus:shadow-outline"><i
-              class="fa fa-search"></i></button>
+            class="px-3 py-2 text-white bg-theme-color rounded-r-md hover:bg-theme-hover-color focus:outline-none focus:shadow-outline">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              viewBox="0 0 24 24" class="w-6 h-6">
+              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </button>
         </div>
         <ul class="flex items-center justify-between ml-2">
           <li>
             <a href=""
-              class="flex items-center h-12 px-3 py-2 relative text-gray-400 focus:outline-none focus:shadow-outline hover:text-gray-600">
-              <i class="fa fa-bell"></i>
-              <span class="px-1 bg-red-500 text-white absolute text-xs rounded-md notification">59</span>
+              class="relative flex items-center h-10 px-2 py-2 text-gray-400 rounded-full hover:bg-blue-100 focus:outline-none focus:bg-blue-100 focus:text-gray-600 hover:text-gray-600">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                viewBox="0 0 24 24" class="w-6 h-6">
+                <path
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                </path>
+              </svg>
+              <!-- <i class="fa fa-bell"></i> -->
+              <span class="absolute px-1 text-xs text-white bg-red-500 rounded-md notification">59</span>
             </a>
           </li>
           <li class="ml-3">
             <a href=""
-              class="flex items-center h-12 px-3 py-2 relative text-gray-400 focus:outline-none focus:shadow-outline hover:text-gray-600">
-              <i class="fa fa-envelope"></i>
-              <span class="px-1 bg-red-500 text-white absolute text-xs rounded-md notification">5</span>
+              class="relative flex items-center h-10 px-2 py-2 text-gray-400 rounded-full hover:bg-blue-100 focus:outline-none focus:bg-blue-100 focus:text-gray-600 hover:text-gray-600">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                viewBox="0 0 24 24" class="w-6 h-6">
+                <path
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                </path>
+              </svg>
+              <span class="absolute px-1 text-xs text-white bg-red-500 rounded-md notification">5</span>
             </a>
           </li>
           <li class="h-12 mx-4 border-r"></li>
-          <li class="flex flex-1 items-center">
-            <a href="" class="flex items-center text-gray-400 focus:outline-none focus:shadow-outline">
-              <span class="hidden md:block text-gray-700 text-sm">Pugazhenthi </span>
-              <img class="w-10 h-10 rounded-full ml-2" src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt="User">
+          <li class="flex items-center flex-1">
+            <a href="" class="flex items-center text-gray-400 focus:outline-none">
+              <span class="hidden text-sm text-gray-700 md:block">Pugazhenthi </span>
+              <img class="w-10 h-10 ml-2 rounded-full" src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt="User">
             </a>
           </li>
         </ul>
       </nav>
+
       <!-- Page Heading -->
       <div class="flex-1 px-6 mb-4">
-        <div class="flex items-center justify-between mb-3">
-          <h1 class="text-gray-700 text-3xl">Dashboard</h1>
-          <div>
-            <a href=""
-              class="p-2 bg-theme-color text-white text-sm rounded-md hover:bg-theme-hover-color focus:outline-none shadow-md">
-              <i class="fa fa-download text-gray-400 px-1"></i>
-              Generate Report
-            </a>
-          </div>
-        </div>
-        <!-- Content Row -->
-        <div class="flex flex-wrap mb-2 -mx-3">
-          <!-- Earnings (Monthly) Card Example -->
-          <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/4 p-3">
-            <div class="p-3 bg-white rounded-md border-l-4 border-blue-600 shadow">
-              <div class="flex justify-between items-center p-2">
-                <div class="w-full pr-2">
-                  <div class="text-xs font-semibold uppercase text-blue-600 leading-5 mb-1">Campaign Sent</div>
-                  <div class="text-xl font-bold text-gray-600">1,895</div>
-                </div>
-                <div>
-                  <i class="fas fa-envelope fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Earnings (Monthly) Card Example -->
-          <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/4 p-3">
-            <div class="p-3 bg-white rounded-md border-l-4 border-indigo-600 shadow">
-              <div class="flex justify-between items-center p-2">
-                <div class="w-full pr-2">
-                  <div class="text-xs font-semibold uppercase text-indigo-600 leading-5 mb-1">New Leads</div>
-                  <div class="text-xl font-bold text-gray-600">34,00</div>
-                </div>
-                <div>
-                  <i class="fas fa-users fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Earnings (Monthly) Card Example -->
-          <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/4 p-3">
-            <div class="p-3 bg-white rounded-md border-l-4 border-orange-600 shadow">
-              <div class="flex justify-between items-center p-2">
-                <div class="w-full pr-2">
-                  <div class="text-xs font-semibold uppercase text-orange-600 leading-5 mb-1">Deals</div>
-                  <div class="text-xl font-bold text-gray-600">68%</div>
-                </div>
-                <div>
-                  <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Earnings (Monthly) Card Example -->
-          <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/4 p-3">
-            <div class="p-3 bg-white rounded-md border-l-4 border-gray-600 shadow">
-              <div class="flex justify-between items-center p-2">
-                <div class="w-full pr-2">
-                  <div class="text-xs font-semibold uppercase text-gray-600 leading-5 mb-1">Downloads</div>
-                  <div class="text-xl font-bold text-gray-600">810</div>
-                </div>
-                <div>
-                  <i class="fas fa-comments fa-2x text-gray-300"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h1 class="mb-2 text-3xl text-gray-700">Dashboard</h1>
 
         <!-- Content Row -->
-        <div class="flex flex-wrap mb-2 -mx-3">
+        <div class="grid grid-cols-1 mb-2 -mx-3 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
           <!-- Earnings (Monthly) Card Example -->
-          <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/4 p-3">
-            <div class="p-3 bg-white rounded-md border-l-4 border-green-600 shadow">
-              <div class="flex justify-between items-center p-2">
+          <div class="w-full p-3">
+            <div class="p-3 bg-white border-l-4 border-blue-600 rounded-md shadow">
+              <div class="flex items-center justify-between p-2">
                 <div class="w-full pr-2">
-                  <div class="text-xs font-semibold uppercase text-theme-color leading-5 mb-1">Total Clicks</div>
-                  <div class="text-xl font-bold text-gray-600">1256</div>
-                  <div class="flex items-center text-xs text-green-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="h-4 w-4">
-                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                      <polyline points="17 6 23 6 23 12"></polyline>
-                    </svg>
-                    <span class="ml-1">12%</span>
-                  </div>
+                  <div class="mb-1 text-xs font-semibold leading-5 text-blue-600 uppercase">Campaign Sent</div>
+                  <div class="text-xl font-bold text-gray-700">1,895</div>
                 </div>
                 <div>
-                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
+                    <path
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                    </path>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <!-- Earnings (Monthly) Card Example -->
-          <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/4 p-3">
-            <div class="p-3 bg-white rounded-md border-l-4 border-green-600 shadow">
-              <div class="flex justify-between items-center p-2">
+          <div class="w-full p-3">
+            <div class="p-3 bg-white border-l-4 border-indigo-600 rounded-md shadow">
+              <div class="flex items-center justify-between p-2">
                 <div class="w-full pr-2">
-                  <div class="text-xs font-semibold uppercase text-theme-color leading-5 mb-1">Total Impressions</div>
-                  <div class="text-xl font-bold text-gray-600">16.6K</div>
-                  <div class="flex items-center text-xs text-green-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="h-4 w-4">
-                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                      <polyline points="17 6 23 6 23 12"></polyline>
-                    </svg>
-                    <span class="ml-1">12%</span>
-                  </div>
+                  <div class="mb-1 text-xs font-semibold leading-5 text-indigo-600 uppercase">New Leads</div>
+                  <div class="text-xl font-bold text-gray-700">34,00</div>
                 </div>
                 <div>
-                  <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
+                    <path
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                    </path>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <!-- Earnings (Monthly) Card Example -->
-          <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/4 p-3">
-            <div class="p-3 bg-white rounded-md border-l-4 border-green-600 shadow">
-              <div class="flex justify-between items-center p-2">
+          <div class="w-full p-3">
+            <div class="p-3 bg-white border-l-4 border-orange-600 rounded-md shadow">
+              <div class="flex items-center justify-between p-2">
                 <div class="w-full pr-2">
-                  <div class="text-xs font-semibold uppercase text-theme-color leading-5 mb-1">Average CTR</div>
-                  <div class="text-xl font-bold text-gray-600">15.2%</div>
-                  <div class="flex items-center text-xs text-green-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="h-4 w-4">
-                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                      <polyline points="17 6 23 6 23 12"></polyline>
-                    </svg>
-                    <span class="ml-1">12%</span>
-                  </div>
+                  <div class="mb-1 text-xs font-semibold leading-5 text-orange-600 uppercase">Deals</div>
+                  <div class="text-xl font-bold text-gray-700">68%</div>
                 </div>
                 <div>
-                  <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
+                    <path
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                    </path>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <!-- Earnings (Monthly) Card Example -->
-          <div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/4 p-3">
-            <div class="p-3 bg-white rounded-md border-l-4 border-red-600 shadow">
-              <div class="flex justify-between items-center p-2">
+          <div class="w-full p-3">
+            <div class="p-3 bg-white border-l-4 border-gray-600 rounded-md shadow">
+              <div class="flex items-center justify-between p-2">
                 <div class="w-full pr-2">
-                  <div class="text-xs font-semibold uppercase text-theme-color leading-5 mb-1">Unique Visits</div>
-                  <div class="text-xl font-bold text-gray-600">12.6%</div>
-                  <div class="flex items-center text-xs text-red-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="h-4 w-4">
-                      <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
-                      <polyline points="17 18 23 18 23 12"></polyline>
-                    </svg>
-                    <span class="ml-1">12%</span>
-                  </div>
+                  <div class="mb-1 text-xs font-semibold leading-5 text-gray-600 uppercase">Downloads</div>
+                  <div class="text-xl font-bold text-gray-700">810</div>
                 </div>
                 <div>
-                  <i class="fas fa-comments fa-2x text-gray-300"></i>
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
+                    <path
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                    </path>
+                  </svg>
                 </div>
               </div>
             </div>
@@ -288,12 +226,12 @@
 
         <!-- Charts Row  -->
         <div class="flex flex-wrap mb-2 -mx-3">
-          <div class="w-full md:w-1/2 p-3">
+          <div class="w-full p-3 md:w-1/2">
             <div class="bg-white rounded-md shadow">
-              <div class="py-4 px-5 bg-gray-100 text-theme-color text-md font-bold border-b rounded-t-md">
+              <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
                 Earnings Overview
               </div>
-              <div class="p-5 text-md leading-7 text-gray-800">
+              <div class="p-5 leading-7 text-gray-800 text-md">
                 <canvas id="conversionsChart" class="chart-canvas"></canvas>
                 <script>
                   new Chart(document.getElementById("conversionsChart"), {
@@ -361,12 +299,12 @@
               </div>
             </div>
           </div>
-          <div class="w-full md:w-1/2 p-3">
+          <div class="w-full p-3 md:w-1/2">
             <div class="bg-white rounded-md shadow">
-              <div class="py-4 px-5 bg-gray-100 text-theme-color text-md font-bold border-b rounded-t-md">
+              <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
                 Earnings Overview
               </div>
-              <div class="p-5 text-md leading-7 text-gray-800">
+              <div class="p-5 leading-7 text-gray-800 text-md">
                 <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                 <script>
                   new Chart(document.getElementById("chartjs-7"), {
@@ -403,87 +341,93 @@
         </div>
         <!-- Recent Activity -->
         <div class="flex flex-wrap mb-2 -mx-3">
-          <div class="w-full md:w-2/4 xl:w-2/5 p-3">
+          <div class="w-full p-3 md:w-2/4 xl:w-2/5">
             <div class="bg-white rounded-md shadow">
-              <div class="py-4 px-5 bg-gray-100 text-theme-color text-md font-bold border-b rounded-t-md">
+              <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
                 Recent Activity
               </div>
-              <div class="p-5 text-md leading-7 text-gray-800">
-                <div class="flex mb-1 py-1 items-center rounded-md cursor-pointer hover:bg-gray-100">
+              <div class="p-5 leading-7 text-gray-800 text-md">
+                <div class="flex items-center py-1 mb-1 rounded-md cursor-pointer hover:bg-gray-100">
                   <div class="flex items-center px-2">
                     <img class="w-10 h-10 rounded-full"
                       src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&fit=facearea&ixid=eyJhcHBfaWQiOjF9&facepad=2"
                       alt="User">
                   </div>
                   <div class="px-2">
-                    <div class="text-sm leading-7 text-gray-700 font-semibold">Dianna Smiley </div>
-                    <p class="text-gray-600 text-sm leading-5">Uploaded the files "Launchday Logo" and "New Design".
+                    <div class="text-sm font-semibold leading-7 text-gray-700">Mario Speedwagon </div>
+                    <p class="text-sm leading-5 text-gray-600">Uploaded the files "Launchday Logo" and "New Design".
                     </p>
-                    <span class="block text-gray-500 text-xs">4m ago</span>
+                    <span class="block text-xs text-gray-500">4m ago</span>
                   </div>
                 </div>
-                <div class="flex mb-1 py-1 items-center rounded-md cursor-pointer hover:bg-gray-100">
+                <div class="flex items-center py-1 mb-1 rounded-md cursor-pointer hover:bg-gray-100">
                   <div class="flex items-center px-2">
                     <img class="w-10 h-10 rounded-full"
                       src="https://images.unsplash.com/photo-1568967729548-e3dbad3d37e0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&ixid=eyJhcHBfaWQiOjF9&fit=facearea&facepad=2"
                       alt="User">
                   </div>
                   <div class="px-2">
-                    <div class="text-sm leading-7 text-gray-700 font-semibold">Dianna Smiley </div>
-                    <p class="text-gray-600 text-sm  leading-4">Shared the "Why Dashkit?" post with 124 subscribers.
+                    <div class="text-sm font-semibold leading-7 text-gray-700">Anna Sthesia </div>
+                    <p class="text-sm leading-4 text-gray-600">Shared the "Why Dashkit?" post with 124 subscribers.
                     </p>
-                    <span class="block text-gray-500 text-xs">1h ago</span>
+                    <span class="block text-xs text-gray-500">1h ago</span>
                   </div>
                 </div>
-                <div class="flex mb-1 py-1 items-center rounded-md cursor-pointer hover:bg-gray-100">
+                <div class="flex items-center py-1 mb-1 rounded-md cursor-pointer hover:bg-gray-100">
                   <div class="flex items-center px-2">
                     <img class="w-10 h-10 rounded-full"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=60&h=60&ixid=eyJhcHBfaWQiOjF9&fit=facearea&facepad=2"
                       alt="User">
                   </div>
                   <div class="px-2">
-                    <div class="text-sm leading-7 text-gray-700 font-semibold">Dianna Smiley </div>
-                    <p class="text-gray-600 text-sm  leading-4">Exported sales data from Launchday's subscriber data.
+                    <div class="text-sm font-semibold leading-7 text-gray-700">Gail Forcewind </div>
+                    <p class="text-sm leading-4 text-gray-600">Exported sales data from Launchday's subscriber data.
                     </p>
-                    <span class="block text-gray-500 text-xs">3h ago</span>
+                    <span class="block text-xs text-gray-500">3h ago</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="w-full md:w-2/4 xl:w-3/5 p-3">
+          <div class="w-full p-3 md:w-2/4 xl:w-3/5">
             <div class="bg-white rounded-md shadow">
-              <div class="py-4 px-5 bg-gray-100 text-theme-color text-md font-bold border-b rounded-t-md">
-                Scratchpad Checklist
+              <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
+                Checklist
               </div>
-              <div class="pt-5 px-5 -mx-2 text-md leading-7 text-gray-800">
-                <div
-                  class="py-1 px-2 leading-8 border-b border-gray-100 text-gray-800 cursor-pointer hover:bg-gray-100">
-                  <input type="checkbox" name="" id="">
-                  This taks is done
+              <div class="px-5 pt-3 -mx-2 leading-7 text-gray-800 text-md">
+                <div class="px-3 py-1 mt-1 leading-8 text-gray-600 border border-red-300 rounded-md hover:bg-red-100">
+                  <input type="checkbox" name="" id="task-1" class="mr-2 form-checkbox">
+                  <label for="task-1">
+                    On-Bboard new user from xyz company
+                  </label>
+                </div>
+                <div class="px-3 py-1 mt-1 leading-8 text-gray-600 border-b border-gray-100 hover:bg-gray-100">
+                  <input type="checkbox" name="" id="task-2" class="mr-2 form-checkbox">
+                  <label for="task-2">
+                    Refactor the core social sharing modules
+                  </label>
+                </div>
+                <div class="px-3 py-1 mt-1 leading-8 text-gray-600 border-b border-gray-100 hover:bg-gray-100">
+                  <input type="checkbox" name="" id="task-3" class="mr-2 form-checkbox">
+                  <label for="task-3">
+                    Hire new operations and facility manager
+                  </label>
                 </div>
                 <div
-                  class="py-1 px-2 leading-8 border-b border-gray-100 text-gray-800 cursor-pointer hover:bg-gray-100">
-                  <input type="checkbox" name="" id="">
-                  Refactor the core social sharing modules
+                  class="px-3 py-1 mt-1 font-semibold leading-8 text-green-700 line-through bg-green-200 border-b border-gray-100 rounded-md">
+                  <input type="checkbox" name="" id="task-4" checked class="mr-2 form-checkbox">
+                  <label for="task-4">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor,
+                  </label>
                 </div>
-                <div
-                  class="py-1 px-2 leading-8 border-b border-gray-100 text-gray-800 cursor-pointer hover:bg-gray-100">
-                  <input type="checkbox" name="" id="">
-                  This taks is done
+                <div class="px-3 py-1 mt-1 leading-8 text-gray-600 border-b border-gray-100 hover:bg-gray-100">
+                  <input type="checkbox" name="" id="task-5" class="mr-2 form-checkbox">
+                  <label for="task-5">
+                    Assumenda incidunt magni explicabo debitis qui consequuntur sint
+                  </label>
                 </div>
-                <div
-                  class="py-1 px-2 leading-8 border-b border-gray-100 text-gray-800 cursor-pointer hover:bg-gray-100">
-                  <input type="checkbox" name="" id="">
-                  This taks is done
-                </div>
-                <div
-                  class="py-1 px-2 leading-8 border-b border-gray-100 text-gray-800 cursor-pointer hover:bg-gray-100">
-                  <input type="checkbox" name="" id="">
-                  This taks is done
-                </div>
-                <div class="p-4 text-right mt-1 border-t">
-                  <button class="bg-theme-color text-gray-100 py-1 px-2 text-sm rounded hover:bg-theme-hover-color">Add
+                <div class="px-4 py-2 mt-1 text-right border-t">
+                  <button class="px-2 py-1 text-sm text-gray-100 rounded bg-theme-color hover:bg-theme-hover-color">Add
                     Task</button>
                 </div>
               </div>
@@ -493,24 +437,24 @@
 
         <!-- Card Row  -->
         <div class="flex flex-wrap mb-2 -mx-3">
-          <div class="w-full md:w-1/2 p-3">
+          <div class="w-full p-3 md:w-1/2">
             <div class="bg-white rounded-md shadow">
-              <div class="py-4 px-5 bg-gray-100 text-theme-color text-md font-bold border-b rounded-t-md">
+              <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
                 Default Card
               </div>
-              <div class="p-5 text-md leading-7 text-gray-800">
+              <div class="p-5 leading-7 text-gray-800 text-md">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, aliquam sit deleniti quis assumenda
                 incidunt magni explicabo debitis qui consequuntur sint quisquam autem accusamus optio, esse, quaerat
                 sapiente illum quibusdam?
               </div>
             </div>
           </div>
-          <div class="w-full md:w-1/2 p-3">
+          <div class="w-full p-3 md:w-1/2">
             <div class="bg-white rounded-md shadow">
-              <div class="py-4 px-5 bg-gray-100 text-theme-color text-md font-bold border-b rounded-t-md">
+              <div class="px-5 py-4 font-bold bg-gray-100 border-b text-theme-color text-md rounded-t-md">
                 Default Card
               </div>
-              <div class="p-5 text-md leading-7 text-gray-800">
+              <div class="p-5 leading-7 text-gray-800 text-md">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, aliquam sit deleniti quis assumenda
                 incidunt magni explicabo debitis qui consequuntur sint quisquam autem accusamus optio, esse, quaerat
                 sapiente illum quibusdam?
@@ -520,9 +464,9 @@
         </div>
       </div>
       <!-- Footer -->
-      <div class="bg-white p-6">
+      <div class="p-6 bg-white">
         <div class="flex">
-          <div class="text-gray-600 text-sm tracking-wide">
+          <div class="text-sm tracking-wide text-gray-600">
             Copyright &copy; Your Website 2020
           </div>
         </div>
